@@ -6,10 +6,10 @@ A garden project written in p5.js for college course prepwork.
 
 ### Linux
 
-**REQURIES `tmux`**
+**REQURIES `tmux` (from distro package manager) and `http-server` (from npm)**
 
 Simply clone the project and then run the start.sh script. The project can then
-be seen at `http://localhost:8080`.
+be seen at `http://localhost:8080`. 
 
 ### Other
 
