@@ -40,14 +40,18 @@ function setup() {
   smooth();
 
   // This button allows us to regenerate the random scene
-  button = createButton('regeneratre');
+  button = createButton('regenerate');
   button.position(10, 10);
+  button.style('font-size', '20px');
+  button.size(130, 40);
   button.mousePressed(regenerate);
+
+  createCloudSliders();
 
   angleMode(DEGREES);
 
   let curr_camera = createCamera();
-  curr_camera.move(0, -800, 600);
+  curr_camera.move(0, -1500, 2000);
   // Having the camera set to look 30 degrees down, aswell as 45 degrees to the right
   // allows us to have an isometric view of the scene. The camera is also required to
   // be in orthographic mode.
@@ -97,7 +101,7 @@ function regenerate() {
   }
 
   clouds = [];
-  let cloudCount = int(random(3, 10));
+  let cloudCount = int(random(10, 35));
   for (let i = 0; i < cloudCount; i++) {
     clouds.push(new Cloud());
   }
