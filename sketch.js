@@ -34,6 +34,7 @@ function setup() {
   // This project uses WebGL to render the scene, as it is 3D
   createCanvas(900, 900, WEBGL);
   noStroke();
+  smooth();
 
   // This button allows us to regenerate the random scene
   button = createButton('regeneratre');
