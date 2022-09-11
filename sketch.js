@@ -10,6 +10,7 @@ const tile_weights = {
 
 let tileModels = [];
 let tilemap = [];
+let clouds = [];
 
 function preload() {
   // We need to load all the model files aswell as all the textures
@@ -28,6 +29,8 @@ function preload() {
   tileModels[1] = new Model(fir_tree_tile, fir_tree_tile_texture);
   tileModels[2] = new Model(ball_tree_tile, ball_tree_tile_texture);
   tileModels[3] = new Model(water_tile, water_tile_texture);
+
+  preloadCloud();
 }
 
 function setup() {
@@ -44,7 +47,7 @@ function setup() {
   angleMode(DEGREES);
 
   let curr_camera = createCamera();
-  curr_camera.move(0, -800, 400);
+  curr_camera.move(0, -800, 600);
   // Having the camera set to look 30 degrees down, aswell as 45 degrees to the right
   // allows us to have an isometric view of the scene. The camera is also required to
   // be in orthographic mode.
@@ -62,9 +65,11 @@ function draw() {
 
   scale(140);
   ambientLight(200);
+  directionalLight(150, 150, 150, 0, 0, -360);
 
   // for isometric view
   rotateY(45);
+  translate(0, 3, 0);
 
   // Here we iterate through the tilemap, and draw each tile
   for (i = -2; i < 3; i++) {
@@ -73,17 +78,28 @@ function draw() {
       tile.draw();
     }
   }
+
+  for (cloud in clouds) {
+    clouds[cloud].draw();
+    clouds[cloud].update();
+  }
 }
 
 // This function is called when the regenerate button is pressed
 // It will iterate through the tilemap, and randomly create a tile for each position using
 // the weights defined at the top of the file.
 function regenerate() {
-  tilemap = []
+  tilemap = [];
   for (i = -2; i < 3; i++) {
     for (j = -2; j < 3; j++) {
       tilemap.push(new Tile(i, j, tileModels[weightedRandom(tile_weights)]));
     }
+  }
+
+  clouds = [];
+  let cloudCount = int(random(3, 10));
+  for (let i = 0; i < cloudCount; i++) {
+    clouds.push(new Cloud());
   }
 }
 
