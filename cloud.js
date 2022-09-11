@@ -7,6 +7,7 @@ function preloadCloud() {
 function createCloudSliders() {
   let p1 = createP('Cloud Rotation Speed');
   p1.style('font-size', '20px');
+  p1.style('color', '#EEEEEE');
   p1.position(100, 40);
 
   cloudRotSpeedSlider = createSlider(0, 10, 2, 0.2);
@@ -22,6 +23,7 @@ function createCloudSliders() {
 
   let p2 = createP('Cloud Speed');
   p2.style('font-size', '20px');
+  p2.style('color', '#EEEEEE');
   p2.position(100, 70);
 
   cloudSpeedSlider = createSlider(0.01, 0.2, 0.03, 0.01);
